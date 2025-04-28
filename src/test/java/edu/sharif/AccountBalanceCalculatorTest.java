@@ -71,7 +71,7 @@ public class AccountBalanceCalculatorTest {
         int balance = AccountBalanceCalculator.calculateBalance(Arrays.asList(
                 new Transaction(TransactionType.DEPOSIT, 100),
                 new Transaction(TransactionType.WITHDRAWAL, 50),
-                new Transaction(TransactionType.DEPOSIT, 50),
+                new Transaction(TransactionType.WITHDRAWAL, 50),
                 new Transaction(TransactionType.WITHDRAWAL, 50)
         ));
         assertEquals(0, balance);
