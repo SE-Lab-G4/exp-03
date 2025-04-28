@@ -8,18 +8,20 @@ public class AccountBalanceCalculator {
     private static List<Transaction> transactionHistory = new ArrayList<>();
 
     // Method to calculate balance based on transactions
-    public static int calculateBalance(List<Transaction> transactions) {
+        public static int calculateBalance(List<Transaction> transactions) {
         int balance = 0;
+        clearTransactionHistory();
         for (Transaction t : transactions) {
             if (t.getType() == TransactionType.DEPOSIT) {
+                addTransaction(t);
                 balance += t.getAmount();
             } else if (t.getType() == TransactionType.WITHDRAWAL) {
-                if(balance >= t.getAmount()) {
+                if (balance >= t.getAmount()) {
+                    addTransaction(t);
                     balance -= t.getAmount();
                 } else {
-                    System.out.println("Not enough balance");
+                    System.out.println("Not enough balance for this transaction");
                 }
-
             }
 
         }
